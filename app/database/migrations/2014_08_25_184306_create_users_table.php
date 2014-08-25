@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
             $table->string('password');
             $table->string('library_name');
             $table->string('email')->unique();
+            $table->timestamps();
         });
 	}
 

@@ -51,4 +51,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         // TODO: Implement getAuthPassword() method.
     }
+
+    public function getRememberToken() {
+
+    }
+
+    public function setRememberToken($token) {
+
+    }
+
+    public function getRememberTokenName() {
+
+    }
+
 }

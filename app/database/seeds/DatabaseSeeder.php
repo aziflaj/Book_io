@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder {
         Eloquent::unguard();
 
         $this->call('UserTableSeeder');
+        $this->call('BookTableSeeder');
     }
 
 }
@@ -34,6 +35,31 @@ class UserTableSeeder extends Seeder {
                 'password'      =>  Hash::make($faker->word()),
                 'library_name'  => $faker->word(),
                 'email'         => $faker->email(),
+            ));
+
+        }
+
+    }
+}
+
+
+class BookTableSeeder extends Seeder {
+
+    public function run() {
+        $categories = array('Cat1', 'Cat2', 'Cat3');
+
+        $faker = Faker\Factory::create();
+        DB::table('books')->delete();
+
+        for ($i=0; $i < 10; $i++) {
+            Book::create(array(
+                'ISBN'             => $faker->ean13(),
+                'title'            => $faker->sentence($nbWords = 3),
+                'author'           => $faker->name(),
+                'category'         => $faker->randomElement($categories),
+                'publishing_house' => $faker->word(),
+                'page_no'          => $faker->numerify('###'),
+                'publishing_year'  => $faker->year(),
             ));
 
         }

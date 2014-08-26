@@ -16,8 +16,8 @@ class CreateLibraryBooksTable extends Migration {
             $table->string('library_id');
             $table->string('book_isbn');
             $table->integer('copies_no');
-
-	}
+	    });
+    }
 
 	/**
 	 * Reverse the migrations.

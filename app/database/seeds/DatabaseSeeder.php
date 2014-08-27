@@ -2,17 +2,14 @@
 
 class DatabaseSeeder extends Seeder {
 
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Eloquent::unguard();
 
         $this->call('UserTableSeeder');
         $this->call('BookTableSeeder');
+        $this->call('LibraryBooksTableSeeder');
+
     }
 
 }
@@ -62,6 +59,42 @@ class BookTableSeeder extends Seeder {
                 'publishing_year'  => $faker->year(),
             ));
 
+        }
+
+    }
+}
+
+class LibraryBooksTableSeeder extends Seeder {
+    public function run() {
+        $faker = Faker\Factory::create();
+
+        //getting all books from the table
+        $books = Book::all();
+
+        $isbn_list = array();
+
+        //getting all ISBNs into a single array
+        foreach ($books as $book) {
+            array_push($isbn_list,$book->ISBN);
+        }
+
+        DB::table('library_books')->delete();
+
+        for($i=0;$i<15;$i++) {
+            $fake_library_id = $faker->numberBetween(1,10);
+            $fake_book_isbn = $faker->randomElement($isbn_list);
+
+            //checking for duplications
+            if(LibraryBooks::where('library_id','=',$fake_library_id)
+                            ->where('book_isbn','=',$fake_book_isbn)->count() > 0) {
+                continue;
+            }
+
+            LibraryBooks::create(array(
+                'library_id'    => $fake_library_id,
+                'book_isbn'     => $fake_book_isbn,
+                'copies_no'     => $faker->numerify('##')
+            ));
         }
 
     }

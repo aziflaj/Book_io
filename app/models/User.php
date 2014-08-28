@@ -7,6 +7,9 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+    public function books() {
+        return $this->hasMany('LibraryBooks');
+    }
 
 	/**
 	 * The database table used by the model.

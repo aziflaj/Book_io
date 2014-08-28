@@ -9,7 +9,7 @@ class CreateBooksTable extends Migration {
 	{
         Schema::create('books', function($table) {
             $table->increments('id');
-            $table->string('ISBN')->unique();
+            $table->string('isbn')->unique();
             $table->string('title');
             $table->string('author');
             $table->string('category');

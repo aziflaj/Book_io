@@ -50,7 +50,7 @@ class BookTableSeeder extends Seeder {
 
         for ($i=0; $i < 10; $i++) {
             Book::create(array(
-                'ISBN'             => $faker->ean13(),
+                'isbn'             => $faker->ean13(),
                 'title'            => $faker->sentence($nbWords = 3),
                 'author'           => $faker->name(),
                 'category'         => $faker->randomElement($categories),
@@ -75,7 +75,7 @@ class LibraryBooksTableSeeder extends Seeder {
 
         //getting all ISBNs into a single array
         foreach ($books as $book) {
-            array_push($isbn_list,$book->ISBN);
+            array_push($isbn_list,$book->isbn);
         }
 
         DB::table('library_books')->delete();
@@ -85,13 +85,13 @@ class LibraryBooksTableSeeder extends Seeder {
             $fake_book_isbn = $faker->randomElement($isbn_list);
 
             //checking for duplications
-            if(LibraryBooks::where('library_id','=',$fake_library_id)
+            if(LibraryBooks::where('user_id','=',$fake_library_id)
                             ->where('book_isbn','=',$fake_book_isbn)->count() > 0) {
                 continue;
             }
 
             LibraryBooks::create(array(
-                'library_id'    => $fake_library_id,
+                'user_id'    => $fake_library_id,
                 'book_isbn'     => $fake_book_isbn,
                 'copies_no'     => $faker->numerify('##')
             ));

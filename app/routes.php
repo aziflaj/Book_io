@@ -7,11 +7,19 @@ Route::get('/hello', function() {
 });
 
 Route::get('/user/{id}', function($id) {
+
+    $books = array();
+
+    foreach(User::find($id)->books as $book) {
+        array_push($books, $book->book);
+    }
+
     return Response::json(array(
         'id'        => $id,
         'user'      => User::find($id),
-        'books'  => User::find($id)->books
+        'books'     => $books
     ));
 });
+
 
 Route::controller('/','IndexController');

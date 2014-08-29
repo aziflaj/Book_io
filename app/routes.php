@@ -21,5 +21,9 @@ Route::get('/user/{id}', function($id) {
     ));
 });
 
+Route::group(array('prefix' => 'api/v1'), function() {
+
+    Route::controller('/','ApiController');
+});
 
 Route::controller('/','IndexController');

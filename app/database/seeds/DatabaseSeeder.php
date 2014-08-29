@@ -61,6 +61,26 @@ class BookTableSeeder extends Seeder {
 
         }
 
+        Book::create(array(
+            'isbn'             => $faker->ean13(),
+            'title'            => $faker->sentence($nbWords = 3),
+            'author'           => "Murat Memalla",
+            'category'         => $faker->randomElement($categories),
+            'publishing_house' => $faker->word(),
+            'page_no'          => $faker->numerify('###'),
+            'publishing_year'  => $faker->year(),
+        ));
+
+        Book::create(array(
+            'isbn'             => $faker->ean13(),
+            'title'            => $faker->sentence($nbWords = 3),
+            'author'           => "Murat Memalla",
+            'category'         => $faker->randomElement($categories),
+            'publishing_house' => $faker->word(),
+            'page_no'          => $faker->numerify('###'),
+            'publishing_year'  => $faker->year(),
+        ));
+
     }
 }
 

@@ -6,7 +6,7 @@ class ApiController extends \BaseController {
         $mybooks = Auth::user()->books;
         $book_list = array();
         foreach ($mybooks as $book) {
-            if (! strcmp($book->book->author, $authorname)) {
+            if (! strcasecmp($book->book->author, $authorname)) {
                 array_push($book_list,$book->book);
             }
         }
@@ -18,7 +18,7 @@ class ApiController extends \BaseController {
         $book_list = array();
 
         foreach ($mybooks as $book) {
-            if (strpos($book->book->title,$title) !== false) {
+            if (stripos($book->book->title,$title) !== false) {
                 array_push($book_list,$book->book);
             }
         }
@@ -29,7 +29,7 @@ class ApiController extends \BaseController {
         $mybooks = Auth::user()->books;
         $book_list = array();
         foreach ($mybooks as $book) {
-            if (! strcmp($book->book->category, $category)) {
+            if (! strcasecmp($book->book->category, $category)) {
                 array_push($book_list,$book->book);
             }
         }

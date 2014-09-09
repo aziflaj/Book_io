@@ -16,8 +16,9 @@ class ApiController extends \BaseController {
     public function getSearchTitle($title) {
         $mybooks = Auth::user()->books;
         $book_list = array();
+
         foreach ($mybooks as $book) {
-            if (! strcmp($book->book->title, $title)) {
+            if (strpos($book->book->title,$title) !== false) {
                 array_push($book_list,$book->book);
             }
         }

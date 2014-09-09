@@ -3,29 +3,60 @@
 class ApiController extends \BaseController {
 
     public function getSearchAuthor($authorname) {
-        $mybooks = Auth::user()->books;
-
-        $book_list = array();
-        foreach ($mybooks as $book) {
-            if (! strcmp($book->book->author, $authorname)) {
-                array_push($book_list,$book->book);
+        if (Auth::check()) {
+            $mybooks = Auth::user()->books;
+            $book_list = array();
+            foreach ($mybooks as $book) {
+                if (! strcmp($book->book->author, $authorname)) {
+                    array_push($book_list,$book->book);
+                }
             }
+            return Response::json($book_list);
+        } else {
+            return Redirect::to('/login');
         }
-
-        return Response::json($book_list);
     }
 
     public function getSearchTitle($title) {
-        $books = Book::where('title','=',$title)->get();
-        return Response::json(array(
-            'books' => $books
-        ));
+        if (Auth::check()) {
+            $mybooks = Auth::user()->books;
+            $book_list = array();
+            foreach ($mybooks as $book) {
+                if (! strcmp($book->book->title, $title)) {
+                    array_push($book_list,$book->book);
+                }
+            }
+            return Response::json($book_list);
+        } else {
+            return Redirect::to('/login');
+        }
     }
 
     public function getSearchCategory($category) {
-        $books = Book::where('category','=',$category)->get();
-        return Response::json(array(
-            'books' => $books
-        ));
+        if (Auth::check()) {
+            $mybooks = Auth::user()->books;
+            $book_list = array();
+            foreach ($mybooks as $book) {
+                if (! strcmp($book->book->category, $category)) {
+                    array_push($book_list,$book->book);
+                }
+            }
+            return Response::json($book_list);
+        } else {
+            return Redirect::to('/login');
+        }
+    }
+
+    public function getBookList() {
+        if (Auth::check()) {
+            $mybooks = Auth::user()->books;
+            $book_list = array();
+            foreach ($mybooks as $book) {
+                    array_push($book_list,$book->book);
+            }
+            return Response::json($book_list);
+        } else {
+            return Redirect::to('/login');
+        }
     }
 }

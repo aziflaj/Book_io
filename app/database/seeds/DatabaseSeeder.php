@@ -111,7 +111,7 @@ class LibraryBooksTableSeeder extends Seeder {
             }
 
             LibraryBooks::create(array(
-                'user_id'    => $fake_library_id,
+                'user_id'       => $fake_library_id,
                 'book_isbn'     => $fake_book_isbn,
                 'copies_no'     => $faker->numerify('##')
             ));

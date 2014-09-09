@@ -47,4 +47,13 @@ class ApiController extends \BaseController {
         }
         return Response::json($book_list);
     }
+
+
+    public function getAdd() {
+        return View::make('addbook');
+    }
+
+    public function postAdd() {
+        return Response::json(Input::all());
+    }
 }

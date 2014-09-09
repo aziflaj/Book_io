@@ -40,6 +40,9 @@ class ApiController extends \BaseController {
         $mybooks = Auth::user()->books;
         $book_list = array();
         foreach ($mybooks as $book) {
+
+            $book->book->copies_no = $book->copies_no;
+
             array_push($book_list,$book->book);
         }
         return Response::json($book_list);

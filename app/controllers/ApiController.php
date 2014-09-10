@@ -76,7 +76,6 @@ class ApiController extends \BaseController {
 
             if ($_test != null) {
                 //the book is in the books table, just add him for this user
-
                 $mybook = new LibraryBooks;
                 $mybook->user_id = Auth::user()->id;
                 $mybook->book_isbn = $isbn;
@@ -84,10 +83,24 @@ class ApiController extends \BaseController {
                 $mybook->save();
 
                 return "This book was saved on library_books";
+            } else {
+                //the book doesn't exist in the books table
+                //add it there then add it to the user
+                $mybook = new Book;
+
+                $mybook->author = Input::get('author');
+                $mybook->category = Input::get('category');
+                $mybook->isbn = $isbn;
+                $mybook->page_no = Input::get('page_no');
+                $mybook->publishing_house = Input::get('publishing_house');
+                $mybook->publishing_year = Input::get('publishing_year');
+                $mybook->title = Input::get('title');
+
+                $mybook->save();
+
+                return "This was stored to books with id ". $mybook->id;
+
             }
-
-            return ($_test == null) ? 'null' : 'not null';
-
         } else {
             //some field forgotten
         }

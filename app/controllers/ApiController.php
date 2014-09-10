@@ -98,6 +98,15 @@ class ApiController extends \BaseController {
 
                 $mybook->save();
 
+                //now that the book was added to books
+                //add him to the user
+                $new_book = new LibraryBooks;
+                $new_book->user_id = Auth::user()->id;
+                $new_book->book_isbn = $isbn;
+                $new_book->copies_no = 1; //TODO: change this
+
+                $new_book->save();
+
                 return "This was stored to books with id ". $mybook->id;
 
             }

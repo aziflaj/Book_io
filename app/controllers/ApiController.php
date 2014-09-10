@@ -112,8 +112,7 @@ class ApiController extends \BaseController {
             }
         } else {
             //some field forgotten
+            return Response::json(Input::all());
         }
-
-        return Response::json(Input::all());
     }
 }

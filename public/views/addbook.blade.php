@@ -30,13 +30,6 @@
     ) }}
 
     <br>
-    {{ Form::text('title', '', array(
-    'placeholder'   => 'Title',
-    'id'            => 'title'
-    )
-    ) }}
-
-    <br>
     {{ Form::text('category', '', array(
     'placeholder'   => 'Category',
     'id'            => 'category'

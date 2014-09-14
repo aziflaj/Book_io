@@ -61,5 +61,12 @@
 {{ Form::submit('Add Book') }}
 
 {{ Form::close() }}
+
+<br>
+<br>
+<br>
+@if($errors->any())
+<h4>{{$errors->first()}}</h4>
+@endif
 </body>
 </html>

@@ -55,13 +55,13 @@ class ApiController extends \BaseController {
 
     public function postAdd() {
         $rules = array(
-            'isbn'              => 'required',
-            'title'             => 'required',
-            'author'            => 'required',
-            'category'          => 'required',
-            'publishing_house'  => 'required',
-            'page_no'           => 'required',
-            'publishing_year'   => 'required'
+            'isbn'              => 'required|size:13',  //13 numbers for any ISBN
+            'title'             => 'required|min:3',    //at least 3 chars for the title
+            'author'            => 'required|alpha',    //the author name can't contain numbers
+            'category'          => 'required',          //category cant be ""
+            'publishing_house'  => 'required',          //publishing house can contain letters and numbers
+            'page_no'           => 'required|numeric',  //page number must be numeric
+            'publishing_year'   => 'required|max:4'     //year number must be numeric, with max 4 numbers
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -111,8 +111,7 @@ class ApiController extends \BaseController {
 
             }
         } else {
-            //some field forgotten
-            return Response::json(Input::all());
+            return Redirect::to('/api/v1/add')->withErrors($validator);
         }
     }
 }

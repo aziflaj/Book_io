@@ -58,8 +58,8 @@ class ApiController extends \BaseController {
             'isbn'              => 'required|size:13',  //13 numbers for any ISBN
             'title'             => 'required|min:3',    //at least 3 chars for the title
             'author'            => 'required|alpha',    //the author name can't contain numbers
-            'category'          => 'required',          //category cant be ""
-            'publishing_house'  => 'required',          //publishing house can contain letters and numbers
+            'category'          => 'required',          //category is required
+            'publishing_house'  => 'required',          //publishing house is required
             'page_no'           => 'required|numeric',  //page number must be numeric
             'publishing_year'   => 'required|max:4'     //year number must be numeric, with max 4 numbers
         );

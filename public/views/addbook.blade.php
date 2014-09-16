@@ -5,60 +5,23 @@
 </head>
 
 <body>
-    {{ Form::open(array(
-        'url' => '/api/v1/add',
-    ) )  }}
+{{ Form::open(array('url' => '/api/v1/add') )  }}
 
-    {{ Form::text('isbn', '', array(
-        'placeholder'   => 'Book ISBN',
-        'id'            => 'isbn'
-        )
-    ) }}
+<input type="number" name="isbn" id="isbn" placeholder="ISBN"> <br>
 
-    <br>
-    {{ Form::text('title', '', array(
-        'placeholder'   => 'Title',
-        'id'            => 'title'
-        )
-    ) }}
+<input type="text" name="title" id="title" placeholder="Title"> <br>
 
-    <br>
-    {{ Form::text('author', '', array(
-    'placeholder'   => 'Author',
-    'id'            => 'author'
-    )
-    ) }}
+<input type="text" name="author" id="author" placeholder="Author"> <br>
 
-    <br>
-    {{ Form::text('category', '', array(
-    'placeholder'   => 'Category',
-    'id'            => 'category'
-    )
-    ) }}
+<input type="text" name="category" id="category" placeholder="Category"> <br>
 
-    <br>
-    {{ Form::text('publishing_house', '', array(
-    'placeholder'   => 'Publishing House',
-    'id'            => 'publishing_house'
-    )
-    ) }}
+<input type="text" name="publishing_house" id="publishing_house" placeholder="Publishing House"> <br>
 
-    <br>
-    {{ Form::text('page_no', '', array(
-    'placeholder'   => 'Number of pages',
-    'id'            => 'page_no'
-    )
-    ) }}
+<input type="number" name="page_no" id="page_no" placeholder="Number of pages"> <br>
 
-    <br>
-    {{ Form::text('publishing_year', '', array(
-    'placeholder'   => 'Publishing Year',
-    'id'            => 'publishing_year'
-    )
-    ) }}
+<input type="number" name="publishing_year" id="publishing_year" placeholder="Publishing Year"> <br>
 
-<br>
-{{ Form::submit('Add Book') }}
+<input type="submit" value="Add Book">
 
 {{ Form::close() }}
 

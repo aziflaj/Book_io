@@ -4,7 +4,8 @@ class IndexController extends \BaseController {
 
     public function getIndex() {
         if (Auth::check()) {
-            return Auth::user(); //return View::make('hello'); or the main view
+            //return Auth::user(); //show the main view
+            return View::make('hello');
         } else {
             return Redirect::to('/login');
         }

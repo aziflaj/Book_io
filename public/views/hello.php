@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <script src="js/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
 	<script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers/ctrl.js"></script>
 </head>
 <body ng-app="book-io">
 <div class="welcome" ng-controller="MainCtrl">
